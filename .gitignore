@@ -25,6 +25,9 @@ hs_err_pid*
 # OSX files
 .DS_Store
 
+# IntelliJ IDEA files
+.idea
+
 # Gradle files
 .gradle
 /build/
