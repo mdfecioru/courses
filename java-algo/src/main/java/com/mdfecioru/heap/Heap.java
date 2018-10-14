@@ -6,13 +6,11 @@ import java.util.Comparator;
 public class Heap<E> {
 
     private final Comparator<? super E> comparator;
-    private int size;
     private final ArrayList<E> arr;
 
     public Heap(int initialCapacity, Comparator<? super E> comparator) {
         this.comparator = comparator;
         arr = new ArrayList<>(initialCapacity);
-        size = 0;
     }
 
     public Heap(int initialCapacity) {
@@ -20,7 +18,7 @@ public class Heap<E> {
     }
 
     public int size() {
-        return size;
+        return arr.size();
     }
 
     private int compareElem(E e1, E e2) {
@@ -37,12 +35,12 @@ public class Heap<E> {
     }
 
     private int getChildLeftIndex(int index) {
-        if (index * 2 + 1 >= size) return -1;
+        if (index * 2 + 1 >= size()) return -1;
         return index * 2 + 1;
     }
 
     private int getChildRightIndex(int index) {
-        if (index * 2 + 2 >= size) return -1;
+        if (index * 2 + 2 >= size()) return -1;
         return index * 2 + 2;
     }
 
@@ -54,7 +52,7 @@ public class Heap<E> {
 
     private void bubbleUp(int index) {
 
-        if (index >= size) return;
+        if (index >= size()) return;
         int parentIndex = getParentIndex(index);
         if (parentIndex == -1) return;
         if (compareElem(arr.get(index), arr.get(parentIndex)) > 0) return;
@@ -63,7 +61,7 @@ public class Heap<E> {
     }
 
     private void bubbleDown(int index) {
-        if (index >= size) return;
+        if (index >= size()) return;
         int leftChildIndex = getChildLeftIndex(index);
         int rightChildIndex = getChildRightIndex(index);
         int minChild = leftChildIndex;
@@ -77,25 +75,22 @@ public class Heap<E> {
     }
 
     public void add(E e) {
-        arr.add(size, e);
-        size++;
-        bubbleUp(size-1);
+        arr.add(e);
+        bubbleUp(size()-1);
     }
 
     public E poll() {
-        if (size == 0) return null;
-        switchElem(0, size-1);
-        E elem = arr.remove(size-1);
-        size--;
+        if (size() == 0) return null;
+        switchElem(0, size()-1);
+        E elem = arr.remove(size()-1);
         bubbleDown(0);
         return elem;
     }
 
     public E remove(int index) {
-        if (size == 0) return null;
-        switchElem(index, size-1);
-        E elem = arr.remove(size-1);
-        size--;
+        if (size() == 0) return null;
+        switchElem(index, size()-1);
+        E elem = arr.remove(size()-1);
         bubbleUp(index);
         bubbleDown(index);
         return elem;
