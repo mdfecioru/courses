@@ -1,5 +1,6 @@
 package com.mdfecioru.graph;
 
+import com.mdfecioru.heap.Heap;
 import com.mdfecioru.utils.Constants;
 
 import java.util.ArrayList;
@@ -64,7 +65,8 @@ public class EdgeWeightedDirectedGraph {
 
     public ArrayList<Node> getMinDistDijkstraOptimized(int start_node) {
         LinkedList<Integer> processedNodes = new LinkedList<>();
-        PriorityQueue<Node> minHeap = new PriorityQueue<>(nr_nodes);
+        //PriorityQueue<Node> minHeap = new PriorityQueue<>(nr_nodes);
+        Heap<Node> minHeap = new Heap(nr_nodes);
         ArrayList<Node> nodeArray = new ArrayList<>(nr_nodes);
 
         for (int i=0; i<nr_nodes; i++) {
