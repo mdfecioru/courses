@@ -52,16 +52,17 @@ public class Heap<E> {
 
     private void bubbleUp(int index) {
 
-        if (index >= size()) return;
+        if ((index <= 0) || (index >= size())) return;
+
         int parentIndex = getParentIndex(index);
-        if (parentIndex == -1) return;
         if (compareElem(arr.get(index), arr.get(parentIndex)) > 0) return;
         switchElem(index, parentIndex);
         bubbleUp(parentIndex);
     }
 
     private void bubbleDown(int index) {
-        if (index >= size()) return;
+        if ((index < 0) || (index >= size())) return;
+
         int leftChildIndex = getChildLeftIndex(index);
         int rightChildIndex = getChildRightIndex(index);
         int minChild = leftChildIndex;
