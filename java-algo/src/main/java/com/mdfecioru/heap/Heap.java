@@ -88,6 +88,11 @@ public class Heap<E> {
         return elem;
     }
 
+    public E peak() {
+        if (size() == 0) return null;
+        return arr.get(0);
+    }
+
     public E remove(int index) {
         if (size() == 0) return null;
         switchElem(index, size()-1);
