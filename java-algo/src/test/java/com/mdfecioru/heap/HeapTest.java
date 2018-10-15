@@ -39,13 +39,11 @@ public class HeapTest {
 
     @Test
     public void getHeapTest2() {
-        Heap<Integer> heap = new Heap<>(10, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return 0 - o1.compareTo(o2);
-            }
-        });
-
+        Heap<Integer> heap = new Heap<>(10, Comparator.comparing(Integer::intValue).reversed());
+        /*
+            This also works:
+            Heap<Integer> heap = new Heap<>(10, ((o1, o2) -> o2.compareTo(o1)));
+         */
         heap.add(4);
         heap.add(10);
         heap.add(2);
