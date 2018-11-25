@@ -46,7 +46,7 @@ public class TwoSumTest {
                 if (twoSum.hasTwoSum(new Long(i))) matches++;
             }
 
-            assertEquals(23, matches);
+            assertEquals(1, matches);
 
         }
         catch (Exception ex) {
