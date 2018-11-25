@@ -2,15 +2,18 @@ package com.mdfecioru.heap;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 
 public class Heap<E> {
 
     private final Comparator<? super E> comparator;
     private final ArrayList<E> arr;
+    private final HashMap<E, Integer> location;
 
     public Heap(int initialCapacity, Comparator<? super E> comparator) {
         this.comparator = comparator;
         arr = new ArrayList<>(initialCapacity);
+        location = new HashMap<>(initialCapacity);
     }
 
     public Heap(int initialCapacity) {
@@ -45,6 +48,8 @@ public class Heap<E> {
     }
 
     private void switchElem(int index1, int index2) {
+        location.put(arr.get(index2), index1);
+        location.put(arr.get(index1), index2);
         E aux = arr.get(index1);
         arr.set(index1, arr.get(index2));
         arr.set(index2, aux);
@@ -77,6 +82,7 @@ public class Heap<E> {
 
     public void add(E e) {
         arr.add(e);
+        location.put(e, size()-1);
         bubbleUp(size()-1);
     }
 
@@ -84,6 +90,7 @@ public class Heap<E> {
         if (size() == 0) return null;
         switchElem(0, size()-1);
         E elem = arr.remove(size()-1);
+        location.remove(elem);
         bubbleDown(0);
         return elem;
     }
@@ -97,12 +104,13 @@ public class Heap<E> {
         if (size() == 0) return null;
         switchElem(index, size()-1);
         E elem = arr.remove(size()-1);
+        location.remove(elem);
         bubbleUp(index);
         bubbleDown(index);
         return elem;
     }
 
-    public int find(E e) {
+    public int find2(E e) {
         int index = 0;
 
         for (E elem: arr) {
@@ -111,6 +119,10 @@ public class Heap<E> {
         }
 
         return -1;
+    }
+
+    public int find(E e) {
+        return location.getOrDefault(e, -1);
     }
 
     public boolean contains(E e) {
