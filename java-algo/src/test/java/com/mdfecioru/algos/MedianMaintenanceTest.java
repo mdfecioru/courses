@@ -28,8 +28,7 @@ public class MedianMaintenanceTest {
             }
 
             assertEquals(1213L, sumMedian % 10000);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("ERROR: " + ex);
         }
     }

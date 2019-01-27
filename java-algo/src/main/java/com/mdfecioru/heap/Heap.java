@@ -34,7 +34,7 @@ public class Heap<E> {
 
     private int getParentIndex(int index) {
         if (index == 0) return -1;
-        return (index-1) / 2;
+        return (index - 1) / 2;
     }
 
     private int getChildLeftIndex(int index) {
@@ -73,7 +73,7 @@ public class Heap<E> {
         int minChild = leftChildIndex;
 
         if (leftChildIndex == -1) return;
-        if ( (rightChildIndex != -1) && (compareElem(arr.get(leftChildIndex), arr.get(rightChildIndex)) > 0) )
+        if ((rightChildIndex != -1) && (compareElem(arr.get(leftChildIndex), arr.get(rightChildIndex)) > 0))
             minChild = rightChildIndex;
         if (compareElem(arr.get(index), arr.get(minChild)) <= 0) return;
         switchElem(index, minChild);
@@ -82,14 +82,14 @@ public class Heap<E> {
 
     public void add(E e) {
         arr.add(e);
-        location.put(e, size()-1);
-        bubbleUp(size()-1);
+        location.put(e, size() - 1);
+        bubbleUp(size() - 1);
     }
 
     public E poll() {
         if (size() == 0) return null;
-        switchElem(0, size()-1);
-        E elem = arr.remove(size()-1);
+        switchElem(0, size() - 1);
+        E elem = arr.remove(size() - 1);
         location.remove(elem);
         bubbleDown(0);
         return elem;
@@ -102,8 +102,8 @@ public class Heap<E> {
 
     public E remove(int index) {
         if (size() == 0) return null;
-        switchElem(index, size()-1);
-        E elem = arr.remove(size()-1);
+        switchElem(index, size() - 1);
+        E elem = arr.remove(size() - 1);
         location.remove(elem);
         bubbleUp(index);
         bubbleDown(index);
@@ -113,7 +113,7 @@ public class Heap<E> {
     public int find2(E e) {
         int index = 0;
 
-        for (E elem: arr) {
+        for (E elem : arr) {
             if (e.equals(elem)) return index;
             index++;
         }

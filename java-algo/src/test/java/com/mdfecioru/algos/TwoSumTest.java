@@ -26,7 +26,7 @@ public class TwoSumTest {
     }
 
     @Test
-    public void twoSumTestFile1 () {
+    public void twoSumTestFile1() {
 
         TwoSum twoSum = new TwoSum();
 
@@ -42,14 +42,13 @@ public class TwoSumTest {
             }
 
             int matches = 0;
-            for (int i=-10000; i<=10000; i++) {
+            for (int i = -10000; i <= 10000; i++) {
                 if (twoSum.hasTwoSum(new Long(i))) matches++;
             }
 
             assertEquals(1, matches);
 
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("ERROR: " + ex);
         }
     }

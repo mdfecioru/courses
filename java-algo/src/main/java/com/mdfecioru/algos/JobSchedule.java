@@ -15,7 +15,7 @@ public class JobSchedule {
         private int w;
         private int l;
 
-        Job (int weight, int length) {
+        Job(int weight, int length) {
             this.w = weight;
             this.l = length;
         }
@@ -32,7 +32,7 @@ public class JobSchedule {
         }
     }
 
-    public JobSchedule () {
+    public JobSchedule() {
         jobList = new ArrayList<>();
         comparatorArray = new ArrayList<>();
 
@@ -47,8 +47,8 @@ public class JobSchedule {
         });
 
         comparatorArray.add((o1, o2) -> {
-            double o1Score = (double)o1.w / (double)o1.l;
-            double o2Score = (double)o2.w / (double)o2.l;
+            double o1Score = (double) o1.w / (double) o1.l;
+            double o2Score = (double) o2.w / (double) o2.l;
             if (o1Score > o2Score) return -1;
             if (o1Score < o2Score) return 1;
             return 0;
@@ -65,7 +65,7 @@ public class JobSchedule {
 
         Collections.sort(jobList, comparatorArray.get(runMode));
 
-        for (Job job: jobList) {
+        for (Job job : jobList) {
             completionTime += (long) job.l;
             weightedSum += completionTime * (long) job.w;
         }

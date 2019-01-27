@@ -1,12 +1,12 @@
 package com.mdfecioru.graph;
 
-public class Node  implements Comparable<Node> {
+public class Node implements Comparable<Node> {
     private int id;
     private int value;
 
-    public Node (int id, int value) {
-         this.id = id;
-         this.value = value;
+    public Node(int id, int value) {
+        this.id = id;
+        this.value = value;
     }
 
     public void setId(int id) {

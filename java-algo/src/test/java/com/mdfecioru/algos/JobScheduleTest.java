@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class JobScheduleTest {
 
-    private void readFromFile1 (String fileName, JobSchedule jobSchedule) throws Exception {
+    private void readFromFile1(String fileName, JobSchedule jobSchedule) throws Exception {
         String line;
         BufferedReader in = new BufferedReader(new InputStreamReader(
                 this.getClass().getResourceAsStream(fileName)));
@@ -25,7 +25,7 @@ public class JobScheduleTest {
     }
 
     @Test
-    public void jobScheduleSimpleTestDiff1 () {
+    public void jobScheduleSimpleTestDiff1() {
 
         JobSchedule jobSchedule = new JobSchedule();
 
@@ -37,7 +37,7 @@ public class JobScheduleTest {
     }
 
     @Test
-    public void jobScheduleSimpleTestRatio1 () {
+    public void jobScheduleSimpleTestRatio1() {
 
         JobSchedule jobSchedule = new JobSchedule();
 
@@ -49,7 +49,7 @@ public class JobScheduleTest {
     }
 
     @Test
-    public void jobScheduleTestFileDiff1 () {
+    public void jobScheduleTestFileDiff1() {
 
         JobSchedule jobSchedule = new JobSchedule();
 
@@ -57,14 +57,13 @@ public class JobScheduleTest {
             readFromFile1("../../../jobs.txt", jobSchedule);
             long weightedSum = jobSchedule.computeJobSchedule(JobSchedule.DIFF_MODE);
             assertEquals(69119377652L, weightedSum);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("ERROR: " + ex);
         }
     }
 
     @Test
-    public void jobScheduleTestFileRatio1 () {
+    public void jobScheduleTestFileRatio1() {
 
         JobSchedule jobSchedule = new JobSchedule();
 
@@ -72,8 +71,7 @@ public class JobScheduleTest {
             readFromFile1("../../../jobs.txt", jobSchedule);
             long weightedSum = jobSchedule.computeJobSchedule(JobSchedule.RATIO_MODE);
             assertEquals(67311454237L, weightedSum);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("ERROR: " + ex);
         }
     }

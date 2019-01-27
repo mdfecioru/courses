@@ -10,12 +10,12 @@ public class TwoSum {
         hashSet = new HashSet<>();
     }
 
-    public void addElem (Long elem) {
+    public void addElem(Long elem) {
         hashSet.add(elem);
     }
 
     public boolean hasTwoSum(Long targetSum) {
-        for (Long elem1: hashSet) {
+        for (Long elem1 : hashSet) {
             Long elem2 = targetSum - elem1;
             if ((elem1.compareTo(elem2) != 0) && (hashSet.contains(elem2))) return true;
         }
